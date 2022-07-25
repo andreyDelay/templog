@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="1" author="andrey.bezrukaviy">
+        <ext:createCollection collectionName="users">
+            <ext:options>
+                {
+                validator: {
+                $jsonSchema: {
+                bsonType: "object",
+                required: ["username", "password", "status", "roles"],
+                properties: {
+                username: {
+                bsonType: "string",
+                description: "username test"
+                },
+                password: {
+                bsonType: "string",
+                description: "password test"
+                },
+                status: {
+                bsonType: "string",
+                description: "status test"
+                },
+                roles: {
+                bsonType: "[]",
+                description: "[
+                    {
+                    "name": "ROLE_TEST"
+                    }
+                ]"
+                }
+                }
+                }
+                },
+                validationAction: "warn",
+                validationLevel: "strict"
+                }
+            </ext:options>
+        </ext:createCollection>
+    </changeSet>
+</databaseChangeLog>

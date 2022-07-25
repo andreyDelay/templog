@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  data:
+    mongodb:
+      auto-index-creation: true
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: blacklog
+      port: 27017
+      host: localhost
+
+jwt:
+  token:
+    secret: nipiamur
+    expired: 86_400_000
+
+mongock:
+  migration-scan-package:
+    - com.excel.test.config
+
+excel:
+  file:
+    file-format: .xlsx
+    main-worksheet-name: main
+    additional-worksheet-name: info
+    header-row: 1
+
